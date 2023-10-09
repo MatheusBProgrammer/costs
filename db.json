@@ -7,27 +7,8 @@
         "id": "1",
         "name": "Infrastructure"
       },
-      "cost": 1131,
-      "services": [
-        {
-          "name": "teste",
-          "cost": "121",
-          "description": "123 sdsadsasdasads",
-          "id": "f5491606-ac09-4e9c-9dd7-f49061ac6c0b"
-        },
-        {
-          "name": "teste",
-          "cost": "999",
-          "description": "sdasdsa",
-          "id": "968a2676-04d3-4843-947c-9031905a0f46"
-        },
-        {
-          "cost": "1",
-          "name": "988",
-          "description": "testedesc",
-          "id": "4b74fcec-3c7e-48c9-833a-16998a4002fd"
-        }
-      ],
+      "cost": 10,
+      "services": [],
       "id": 1
     },
     {
@@ -47,6 +28,17 @@
         }
       ],
       "id": 2
+    },
+    {
+      "name": "Projeto3",
+      "budget": "987654321",
+      "category": {
+        "id": "1",
+        "name": "Infrastructure"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 3
     }
   ],
   "categories": [

@@ -7,6 +7,8 @@ import ProjectForm from "../project/ProjectForm";
 import Message from "../layout/Message";
 import ServiceForm from "../service/ServiceForm";
 import { parse, v4 as uuidv4 } from "uuid";
+import ServiceCard from "../service/ServiceCard";
+
 function Project() {
   const url = "http://localhost:5000/projects";
 
@@ -14,11 +16,11 @@ function Project() {
   const { id } = useParams();
 
   const [project, setProject] = useState([]);
+  const [services, setServices] = useState([]);
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [showServiceForm, setShowServiceForm] = useState(false);
   const [message, setMessage] = useState("");
   const [type, setType] = useState("");
-  const [service, setServices] = useState([]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -29,7 +31,10 @@ function Project() {
         },
       })
         .then((resp) => resp.json())
-        .then((data) => setProject(data))
+        .then((data) => {
+          setProject(data);
+          setServices(data.services);
+        })
         .catch((err) => console.log(err));
     }, 1000);
   }, [id]);
@@ -105,6 +110,40 @@ function Project() {
       });
   }
 
+  function removeService(id, cost) {
+    setMessage("");
+    //criará uma nova lista de services, onde não haja um service com o id infermado por parâmetro
+    const servicesUpdated = project.services.filter(
+      (service) => service.id !== id
+    );
+
+    const projectUpdated = project;
+    //atualiza todos os serviços do projeto inteiro
+    projectUpdated.services = servicesUpdated;
+    //atualiza os custos do projeto
+    projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost);
+
+    fetch(`${url}/${projectUpdated.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      //atualiza todo o projeto, que ja está com os serviços atualizados
+      body: JSON.stringify(projectUpdated),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setProject(data);
+        setServices(servicesUpdated);
+        setMessage("Projeto Removido com Sucesso");
+        setType("sucess");
+      })
+      .catch((err) => {
+        console.log(err);
+        setMessage("Erro ao remover Projeto");
+      });
+  }
+
   return (
     <>
       {project.name ? (
@@ -159,7 +198,22 @@ function Project() {
             </div>
             <h2>Serviços</h2>
             <Container customClass="start">
-              <p>Itens de serviço</p>
+              {services.length > 0 &&
+                services.map((service) => (
+                  <ServiceCard
+                    id={service.id ? service.id : "sem id"}
+                    name={service.name ? service.name : "sem nome"}
+                    cost={service.cost ? service.cost : 0}
+                    description={
+                      service.description
+                        ? service.description
+                        : "sem descrição informada"
+                    }
+                    key={service.id}
+                    handleRemove={removeService}
+                  />
+                ))}
+              {services.length === 0 && <p>Não há serviços cadastrados</p>}
             </Container>
           </Container>
         </div>

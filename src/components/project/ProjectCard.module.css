@@ -74,12 +74,15 @@
   justify-content: center;
   align-items: center;
   transition: 0.6s;
+  text-align: center;
 }
 
 .project_card_actions svg {
-  margin-right: 0.5em;
 }
 .project_card_actions a:hover,
 .project_card_actions button:hover {
   background-color: #ffbb33;
+}
+.service_button:hover {
+  color: red;
 }
