@@ -1,0 +1,18 @@
+.newProject_container {
+  background-color: #7b7b7b;
+  width: 50%;
+  margin: 0 auto;
+  padding: 4em;
+  text-align: center;
+}
+
+.newProject_container h1 {
+  border-radius: 30px;
+  background-color: #222;
+  padding: 5px;
+  margin-bottom: 0.5em;
+  color: #ffbb33;
+}
+.newProject_container p {
+  color: black;
+}

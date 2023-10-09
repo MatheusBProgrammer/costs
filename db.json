@@ -1,0 +1,70 @@
+{
+  "projects": [
+    {
+      "name": "asdasdas",
+      "budget": "111212",
+      "category": {
+        "id": "1",
+        "name": "Infrastructure"
+      },
+      "cost": 1131,
+      "services": [
+        {
+          "name": "teste",
+          "cost": "121",
+          "description": "123 sdsadsasdasads",
+          "id": "f5491606-ac09-4e9c-9dd7-f49061ac6c0b"
+        },
+        {
+          "name": "teste",
+          "cost": "999",
+          "description": "sdasdsa",
+          "id": "968a2676-04d3-4843-947c-9031905a0f46"
+        },
+        {
+          "cost": "1",
+          "name": "988",
+          "description": "testedesc",
+          "id": "4b74fcec-3c7e-48c9-833a-16998a4002fd"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "name": "Projeto2",
+      "budget": "99999",
+      "category": {
+        "id": "1",
+        "name": "Infrastructure"
+      },
+      "cost": 999,
+      "services": [
+        {
+          "name": "Serviço 1",
+          "cost": "999",
+          "description": "tester de descrição",
+          "id": "61c89c67-2a67-40af-a45e-e01631e09eb1"
+        }
+      ],
+      "id": 2
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Infrastructure"
+    },
+    {
+      "id": 2,
+      "name": "Development"
+    },
+    {
+      "id": 3,
+      "name": "Design"
+    },
+    {
+      "id": 4,
+      "name": "Planning"
+    }
+  ]
+}
